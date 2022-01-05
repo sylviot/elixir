@@ -8,18 +8,14 @@ defmodule ToDo do
     end
 
     def add(itens, description) when itens == %{} do
-        id = String.to_atom("1")
+        id = 1
         Map.put(itens, id, %{description: description, status: New})
     end
 
     def add(itens, description) do
         # ToDo - ponto de melhoria... ficou complexo essa parte.
-        ids = Map.keys(itens) 
-        max_id = Atom.to_string(List.last(ids))
-        {max_id, _} = Integer.parse(max_id)
-        id = Integer.to_string(max_id + 1)
-        id = String.to_atom(id)
-
+        ids = Map.keys(itens)
+        id = List.last(ids) + 1
         Map.put(itens, id, %{description: description, status: New})
     end
 
@@ -65,7 +61,7 @@ defmodule ToDoTest do
     end
 
     test "add when ToDo itens empty" do
-        expected = %{"1": %{description: "Test add", status: New}}
+        expected = %{1 => %{description: "Test add", status: New}}
 
         result = ToDo.add(%{}, "Test add")
 
@@ -74,15 +70,34 @@ defmodule ToDoTest do
 
     test "add when ToDo itens has value" do
         expected = %{
-            "1": %{description: "Test add", status: New},
-            "2": %{description: "Test add more one item", status: New}
+            1 => %{description: "Test add", status: New},
+            2 => %{description: "Test add more one item", status: New}
         }
 
-        itens = %{"1": %{description: "Test add", status: New}}
-        
+        itens = %{1 => %{description: "Test add", status: New}}
+
         result = ToDo.add(itens, "Test add more one item")
 
         assert expected === result
+    end
+
+    test "add 2 itens" do
+        expected = %{
+            1 => %{description: "Test add", status: New},
+            2 => %{description: "Test add more one item", status: New},
+            3 => %{description: "Teste add third item", status: New},
+            4 => %{description: "fourth item add", status: New}
+        }
+
+        itens =  %{
+            1 => %{description: "Test add", status: New},
+            2 => %{description: "Test add more one item", status: New}
+        }
+
+        itens = ToDo.add(itens, "Teste add third item")
+        result = ToDo.add(itens, "fourth item add")
+
+        assert expected == result
     end
 
     test "delete" do
@@ -105,13 +120,13 @@ defmodule ToDoTest do
 
     test "show" do
         expected = "[1] Test add (Elixir.New)\n"
-        
+
         itens = %{
             "1": %{description: "Test add", status: New}
         }
 
         # Função anonima sem argumento
-        execute_show = fn -> 
+        execute_show = fn ->
             ToDo.show(itens)
         end
 
