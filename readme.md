@@ -5,7 +5,7 @@ Para realizar os desafios/exercicios, crie uma pasta com o seu nome e faça dent
 # Exercicios
 1 - Resumindo o que aprendeu
 - Acesse o site [Elixir lang](https://elixir-lang.org/getting-started/introduction.html)
-- Crei um arquivo exercicio1.md na sua pasta
+- Criar um arquivo exercicio1.md na sua pasta
 - Resuma o entendimento dos seguintes capitulos
   - Basic types
   - Basic operators
@@ -13,7 +13,10 @@ Para realizar os desafios/exercicios, crie uma pasta com o seu nome e faça dent
   - case, cond, and if
   - Modules and functions
 
-
+2 - Resumindo o que aprendeu
+- Criar um arquivo exercicio2.md na sua pasta
+- Resuma o entendimento dos seguintes capitulos
+  - Module attributes 
 
 # Desafios
 
