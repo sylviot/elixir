@@ -26,6 +26,16 @@ Para realizar os desafios/exercicios, crie uma pasta com o seu nome e faça dent
   - Remover todas as vogais (a,e,i,o,u) do texto
 - Retornar uma saída
 
+2 - Leitura de JSON
+- Criar um projeto com mix
+- Criar um modulo para leitura de arquivos em disco
+- Criar um modulo que transforme string em JSON
+- Manipular um JSON com os seguintes atributos:
+  - "nome": string
+  - "idade": int
+  - "hobbies": string array
+- Criar modulo de exibição de JSON em console
+- Exibir formatado esse JSON
 
 ### Dúvidas
 Entre em contato pelo Telegram @sylviot
